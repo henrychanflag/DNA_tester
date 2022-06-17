@@ -61,6 +61,9 @@
 //r2.4
 // - Add laser adjustment factor
 
+//2.5
+// - Limit the maximum laser value = 3300 after adjustment factor
+
 
 //Use TMR0 timer interrupt to do regular routines
 
@@ -681,11 +684,17 @@ void  average_laser_cal (void)
 		//Laser detector value will be display in XXXX mV (4 SIG FIG)
 		LASER_average_timer = 1;
 		display_laser_1A = average_laser_1A * VREF/4096/laser_factor[0];
+		if (display_laser_1A > 3300) display_laser_1A = 3300;
 		display_laser_1B = average_laser_1B * VREF/4096/laser_factor[1];
+		if (display_laser_1B > 3300) display_laser_1B = 3300;
 		display_laser_2A = average_laser_2A * VREF/4096/laser_factor[2];
+		if (display_laser_2A > 3300) display_laser_2A = 3300;
 		display_laser_2B = average_laser_2B * VREF/4096/laser_factor[3];
+		if (display_laser_2B > 3300) display_laser_2B = 3300;
 		display_laser_3A = average_laser_3A * VREF/4096/laser_factor[4];
+		if (display_laser_3A > 3300) display_laser_3A = 3300;
 		display_laser_3B = average_laser_3B * VREF/4096/laser_factor[5];
+		if (display_laser_3B > 3300) display_laser_3B = 3300;
 
 		//*************************************************************
 
